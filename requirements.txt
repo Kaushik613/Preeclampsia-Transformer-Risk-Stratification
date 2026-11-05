@@ -1,0 +1,10 @@
+# Compatible with the supplied serialized preprocessor and dashboard
+numpy>=1.24,<3
+pandas>=2.0,<3
+scikit-learn==1.7.2
+joblib>=1.3
+PyYAML>=6.0
+matplotlib>=3.7
+seaborn>=0.12
+torch>=2.0,<3
+gradio>=6.30,<7

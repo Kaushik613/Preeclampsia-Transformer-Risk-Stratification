@@ -1,0 +1,51 @@
+# Clinical Research Risk Stratification Configuration
+# Single source of truth for composite Research Risk Index weights and tier thresholds.
+# Note: These are research-oriented project thresholds anchored in clinical literature (NICE NG133, HTG630, ISSHP).
+# They represent an estimated preeclampsia-related risk profile, NOT a confirmed diagnosis.
+
+seed: 42
+
+split:
+  train_ratio: 0.70
+  val_ratio: 0.15
+  test_ratio: 0.15
+
+thresholds:
+  low_risk_upper: 0.35
+  moderate_risk_upper: 0.65
+  # High risk is >= 0.65
+
+weights:
+  angiogenic_component: 0.30
+  maternal_clinical_component: 0.25
+  cardiovascular_component: 0.20
+  biochemical_component: 0.15
+  lifestyle_component: 0.10
+
+model:
+  token_dim: 32
+  num_heads: 4
+  num_layers: 2
+  ff_dim: 64
+  dropout: 0.15
+  mask_prob: 0.15
+  learning_rate: 0.001
+  batch_size: 32
+  epochs: 100
+  patience: 15
+
+clinical_anchors:
+  # Reference thresholds for individual markers
+  bp:
+    elevated_sysbp: 130  # True systolic BP (mapped from CSV diabp)
+    hypertensive_sysbp: 140
+    elevated_diabp: 80   # True diastolic BP (mapped from CSV sysbp)
+    hypertensive_diabp: 90
+  maternal:
+    high_risk_age: 35
+    very_high_risk_age: 40
+    obese_bmi: 30.0
+    severely_obese_bmi: 35.0
+  biochemical:
+    creatinine_upper_normal: 1.0  # mg/dL
+    thrombocytopenia_platelet: 150  # x10^9/L

@@ -1,0 +1,54 @@
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Secrets and temporary files
+.env
+.env.*
+!.env.example
+*.log
+*.tmp
+
+# Raw or split datasets (keep local; upload only with explicit permission)
+data/
+preeclampsia.csv
+**/preeclampsia.csv
+train.csv
+validation.csv
+test.csv
+**/train.csv
+**/validation.csv
+**/test.csv
+**/*with_ref_risk.csv
+
+# Patient-level outputs and embeddings
+**/*predictions*.csv
+**/patient_report*.csv
+**/patient_report*.html
+**/app_reports/
+**/*embeddings*.npy
+*.npy
+
+# Do not track duplicate root-level model/config copies
+/best_model.pt
+/preprocessor.pkl
+/risk_thresholds.yaml
+
+# Ignore generated outputs by default; explicitly allow required inference artifacts
+outputs/*
+!outputs/
+!outputs/checkpoints/
+outputs/checkpoints/*
+!outputs/checkpoints/best_model.pt
+!outputs/preprocessor.pkl
+!outputs/ridge_baseline.joblib
+
+# General editor / OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
